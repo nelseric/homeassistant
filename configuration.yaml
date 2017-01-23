@@ -85,6 +85,11 @@ sensor:
       - wind_kph
       - wind_mph
       - wind_string
+  - platform: rest
+    resource: https://api.hello.is/v1/room/current
+    headers:
+      X-Client-Version: 1.4.4.4"
+      User-Agent: Sense/1.4.4.4 Platform/iOS OS/9.3.2"
 
 
 # Text to speech
