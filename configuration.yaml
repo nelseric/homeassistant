@@ -19,7 +19,7 @@ frontend:
 
 http:
   # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
+  # api_password: eric
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
 
@@ -27,7 +27,7 @@ http:
 updater:
 
 # Discover some devices automatically
-discovery:
+# discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -38,58 +38,50 @@ history:
 # View all events in a logbook
 logbook:
 
+logger:
+  default: info
+  logs:
+    homeassistant.components.sensor.hello_sense: debug
+
 # Track the sun
 sun:
 
-# Weather Prediction
 sensor:
+  - platform: hello_sense
+    api_key: !secret sense_api_key
+  # Weather Prediction
   - platform: wunderground
     api_key: !secret wunderground_api_key
     monitored_conditions:
       - alerts
-      - dewpoint_c
       - dewpoint_f
       - dewpoint_string
-      - feelslike_c
       - feelslike_f
       - feelslike_string
-      - heat_index_c
       - heat_index_f
       - heat_index_string
       - elevation
       - location
       - observation_time
       - precip_1hr_in
-      - precip_1hr_metric
       - precip_1hr_string
       - precip_today_in
-      - precip_today_metric
       - precip_today_string
       - pressure_in
-      - pressure_mb
       - pressure_trend
       - relative_humidity
       - station_id
       - solarradiation
       - temperature_string
-      - temp_c
       - temp_f
       - UV
-      - visibility_km
       - visibility_mi
       - weather
       - wind_degrees
       - wind_dir
-      - wind_gust_kph
       - wind_gust_mph
-      - wind_kph
       - wind_mph
       - wind_string
-  - platform: rest
-    resource: https://api.hello.is/v1/room/current
-    headers:
-      X-Client-Version: 1.4.4.4"
-      User-Agent: Sense/1.4.4.4 Platform/iOS OS/9.3.2"
 
 
 # Text to speech

@@ -1,0 +1,12 @@
+share/
+.uuid
+.HA_VERSION
+home-assistant/
+home-assistant_v2.db
+lib/
+pip-selfcheck.json
+pyvenv.cfg
+selenium/
+home-assistant.log
+bin/
+*.pyc
