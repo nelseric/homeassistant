@@ -10,3 +10,5 @@ selenium/
 home-assistant.log
 bin/
 *.pyc
+deps
+tts
