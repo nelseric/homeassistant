@@ -33,7 +33,7 @@ conversation:
 history:
 
 recorder:
-  db_url: postgresql://localhost/homeassistant
+  db_url: postgresql:///homeassistant
 
 # View all events in a logbook
 logbook:
