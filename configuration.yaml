@@ -11,9 +11,6 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Chicago
 
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
 
@@ -45,6 +42,18 @@ logger:
 
 # Track the sun
 sun:
+
+light:
+  platform: hue
+
+device_tracker:
+  - platform: asuswrt
+    host: 192.168.1.1
+    protocol: telnet
+    username: admin
+    password: !secret router_password
+
+  
 
 sensor:
   - platform: hello_sense
