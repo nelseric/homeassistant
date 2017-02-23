@@ -47,7 +47,7 @@ sun:
 light:
   platform: hue
 
-mqttt: !include misc/mqtt.yaml
+mqtt: !include misc/mqtt.yaml
 device_tracker: !include misc/device_tracker.yaml
 switch: !include_dir_list switch
 sensor: !include_dir_list sensor
