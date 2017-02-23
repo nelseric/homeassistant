@@ -1,0 +1,6 @@
+platform: wake_on_lan
+mac_address: !secret eric-pc_mac
+host: eric-pc
+name: "Eric-PC"
+turn_off:
+  service: shell_command.turn_off_ericpc

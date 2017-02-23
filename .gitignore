@@ -5,7 +5,7 @@ home-assistant.log
 deps
 tts
 *.swp
-
+.venv
 secrets.yaml
 phue.conf
 known_devices.yaml

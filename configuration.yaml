@@ -28,84 +28,27 @@ discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
+tts:
+  platform: google
 
-# Enables support for tracking state changes over time.
+logbook:
 history:
-
 recorder:
   db_url: postgresql:///homeassistant
-
-# View all events in a logbook
-logbook:
 
 logger:
   default: info
   logs:
     homeassistant.components.sensor.hello_sense: debug
 
-# Track the sun
+ifttt:
+  key: !secret ifttt_key
 sun:
-
 light:
   platform: hue
 
-device_tracker:
-  - platform: asuswrt
-    host: 192.168.1.1
-    protocol: telnet
-    username: admin
-    password: !secret router_password
-
-switch:
-  - platform: wake_on_lan
-    mac_address: !secret eric-pc_mac
-    host: eric-pc
-    name: "Eric-PC"
-    turn_off:
-      service: shell_command.turn_off_ericpc
-
-sensor:
-  - platform: hello_sense
-    api_key: !secret sense_api_key
-  # Weather Prediction
-  - platform: wunderground
-    api_key: !secret wunderground_api_key
-    monitored_conditions:
-      - alerts
-      - dewpoint_f
-      #- dewpoint_string
-      - feelslike_f
-      #- feelslike_string
-      #- heat_index_f
-      #- heat_index_string
-      #- elevation
-      #- location
-      #- observation_time
-      #- precip_1hr_in
-      #- precip_1hr_string
-      - precip_today_in
-      #- precip_today_string
-      #- pressure_in
-      #- pressure_trend
-      - relative_humidity
-      #- station_id
-      #- solarradiation
-      #- temperature_string
-      - temp_f
-      #- UV
-      #- visibility_mi
-      - weather
-      #- wind_degrees
-      #- wind_dir
-      - wind_gust_mph
-      - wind_mph
-      #- wind_string
-
-shell_command: !include shell_commands.yaml
-ifttt:
-  key: !secret ifttt_key
-
-# Text to speech
-tts:
-  platform: google
+device_tracker: !include misc/device_tracker.yaml
+switch: !include_dir_list switch
+sensor: !include_dir_list sensor
+shell_command: !include misc/shell_commands.yaml
 
