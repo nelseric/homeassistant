@@ -4,6 +4,7 @@ home-assistant.log
 *.pyc
 deps
 tts
+*.swp
 
 secrets.yaml
 phue.conf
