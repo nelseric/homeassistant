@@ -1,0 +1,4 @@
+broker: m12.cloudmqtt.com
+port: 24257
+username: !secret cloudmqtt_user
+password: !secret cloudmqtt_password

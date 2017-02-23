@@ -47,9 +47,7 @@ sun:
 light:
   platform: hue
 
-mqttt:
-  broker: 127.0.0.1
-
+mqttt: !include misc/mqttt.yaml
 device_tracker: !include misc/device_tracker.yaml
 switch: !include_dir_list switch
 sensor: !include_dir_list sensor

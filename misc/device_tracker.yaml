@@ -3,3 +3,4 @@
   protocol: telnet
   username: admin
   password: !secret router_password
+- platform: owntracks
