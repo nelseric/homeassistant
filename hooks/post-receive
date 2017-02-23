@@ -1,5 +1,4 @@
 #!/bin/sh
 git fetch
 git --git-dir=. --work-tree=$PWD/.. reset --hard
-/bin/systemctl restart home-assistant@homeassistant.service
-
+/home/homeassistant/.homeassistant/restart.sh
