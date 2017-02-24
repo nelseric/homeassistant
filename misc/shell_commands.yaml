@@ -1,1 +1,1 @@
-turn_off_ericpc: !secret turn_off_eric-pc_cmd
+turn_off_ericpc: !secret turn_off_ericpc_cmd
