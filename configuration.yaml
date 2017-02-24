@@ -1,45 +1,27 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude
   longitude: !secret longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret elevation
-  # metric for Metric, imperial for Imperial
   unit_system: imperial
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Chicago
 
-# Enables the frontend
-frontend:
-
-http:
-  # Uncomment this to add a password (recommended!)
-  # api_password: eric
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
-
-# Checks for available updates
 updater:
-
-# Discover some devices automatically
 discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-tts:
-  platform: google
-
 logbook:
 history:
 recorder:
   db_url: postgresql:///homeassistant
 
-logger:
-  default: info
-  logs:
-    homeassistant.components.sensor.hello_sense: debug
+logger: !include misc/logger.yaml
+
+frontend:
+http:
+  api_password: !secret http_password
+
+conversation:
+tts:
+  platform: google
 
 ifttt:
   key: !secret ifttt_key
@@ -48,8 +30,9 @@ light:
   platform: hue
 
 mqtt: !include misc/mqtt.yaml
-device_tracker: !include misc/device_tracker.yaml
+device_tracker: !include_dir_list device_tracker
 switch: !include_dir_list switch
 sensor: !include_dir_list sensor
+notify: !include_dir_list notify
 shell_command: !include misc/shell_commands.yaml
 
