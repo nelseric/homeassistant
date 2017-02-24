@@ -8,7 +8,7 @@ from datetime import timedelta
 import requests
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.const import (CONF_API_KEY, STATE_UNKNOWN)
+from homeassistant.const import (CONF_API_KEY, STATE_UNKNOWN, TEMP_CELSIUS)
 
 from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
@@ -61,6 +61,8 @@ class HelloSenseSensor(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement."""
+        if self._state['unit'] == 'c':
+            return TEMP_CELSIUS
         return self._state['unit']
 
     @property
