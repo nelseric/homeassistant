@@ -67,7 +67,12 @@ class HelloSenseSensor(Entity):
 
     @property
     def state_attributes(self):
-        return self._state
+        return {
+            'condition': self._state['condition'],
+            'ideal_conditions': self._state['ideal_conditions'],
+            'last_updated': self._state['last_updated_utc'],
+            'message': self._state['message']
+        }
 
     def update(self):
         """Get the latest data from REST API and update the state."""
@@ -103,6 +108,7 @@ class HelloSenseData(object):
                 response = sess.send(
                     self._request, timeout=10, verify=True)
             self.data = json.loads(response.text)
+            _LOGGER.debug(self.data)
             self.streams = self.data.keys()
         except requests.exceptions.RequestException:
             _LOGGER.error("Error fetching data: %s", self._request)
