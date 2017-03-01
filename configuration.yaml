@@ -5,6 +5,7 @@ homeassistant:
   elevation: !secret elevation
   unit_system: imperial
   time_zone: America/Chicago
+  customize: !include misc/customize.yaml
 
 updater:
 discovery:
@@ -19,6 +20,11 @@ frontend:
 http:
   api_password: !secret http_password
 
+config:
+group: !include groups.yaml
+
+emulated_hue:
+
 conversation:
 tts:
   platform: google
@@ -26,8 +32,11 @@ tts:
 ifttt:
   key: !secret ifttt_key
 sun:
+
 light:
   platform: hue
+  allow_in_emulated_hue: false
+  host: 192.168.1.167
 
 mqtt: !include misc/mqtt.yaml
 device_tracker: !include_dir_list device_tracker
