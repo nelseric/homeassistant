@@ -1,4 +1,4 @@
-default: warning
+default: info
 logs:
   homeassistant.components.sensor.hello_sense: debug
   homeassistant.components.device_tracker.owntracks: debug
