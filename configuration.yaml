@@ -24,6 +24,8 @@ config:
 group: !include groups.yaml
 
 emulated_hue:
+  type: alexa
+  expose_by_default: false
 
 conversation:
 tts:
