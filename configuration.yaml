@@ -45,5 +45,6 @@ device_tracker: !include_dir_list device_tracker
 switch: !include_dir_list switch
 sensor: !include_dir_list sensor
 notify: !include_dir_list notify
+media_player: !include_dir_list media_player
 shell_command: !include misc/shell_commands.yaml
 
