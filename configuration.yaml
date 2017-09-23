@@ -44,6 +44,7 @@ mqtt: !include misc/mqtt.yaml
 device_tracker: !include_dir_list device_tracker
 switch: !include_dir_list switch
 sensor: !include_dir_list sensor
+binary_sensor: !include_dir_list binary_sensor
 notify: !include_dir_list notify
 media_player: !include_dir_list media_player
 shell_command: !include misc/shell_commands.yaml
