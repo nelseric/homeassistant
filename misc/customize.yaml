@@ -1,3 +1,6 @@
 switch.eric_pc:
   emulated_hue: true
   emulated_hue_name: 'eric pc'
+switch.tv:
+  emulated_hue: true
+  emulated_hue_name: 'tv'
