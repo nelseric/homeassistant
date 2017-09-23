@@ -1,0 +1,3 @@
+platform: flux
+lights:
+  - light.Kitchen

@@ -1,1 +1,2 @@
 turn_off_ericpc: !secret turn_off_ericpc_cmd
+tv_power: irsend send_once samsung key_power --count 2
