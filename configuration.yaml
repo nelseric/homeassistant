@@ -40,6 +40,11 @@ light:
   allow_in_emulated_hue: false
   host: 192.168.1.167
 
+apple_tv:
+  - host: 192.168.1.192
+    login_id: !secret apple_tv_login_id
+    credentials: !secret apple_tv_credential
+
 mqtt: !include misc/mqtt.yaml
 device_tracker: !include_dir_list device_tracker
 switch: !include_dir_list switch
