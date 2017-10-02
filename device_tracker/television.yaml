@@ -1,3 +1,5 @@
 platform: ping
+interval_seconds: 1
+track_new_devices: false
 hosts:
   television: 192.168.1.199
