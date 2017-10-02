@@ -2,7 +2,7 @@ platform: template
 switches:
   tv:
     friendly_name: "Television"
-    value_template: "{{ is_state("device_tracker.television", "home") }}"
+    value_template: "{{ is_state('device_tracker.television', 'home') }}"
     turn_on:
       service: shell_command.tv_power
     turn_off:
