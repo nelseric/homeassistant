@@ -44,6 +44,8 @@ apple_tv:
   - host: 192.168.1.192
     login_id: !secret apple_tv_login_id
     credentials: !secret apple_tv_credential
+ecobee:
+    api_key: !ecobee_api_key
 
 mqtt: !include misc/mqtt.yaml
 device_tracker: !include_dir_list device_tracker
