@@ -1,2 +1,0 @@
-platform: hello_sense
-api_key: !secret sense_api_key

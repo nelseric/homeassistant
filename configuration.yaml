@@ -41,7 +41,7 @@ light:
   host: 192.168.1.167
 
 apple_tv:
-  - host: 192.168.1.192
+  - host: 192.168.1.215
     login_id: !secret apple_tv_login_id
     credentials: !secret apple_tv_credential
 ecobee:

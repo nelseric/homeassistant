@@ -10,3 +10,4 @@ secrets.yaml
 phue.conf
 known_devices.yaml
 plex.conf
+ecobee.conf
