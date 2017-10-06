@@ -1,0 +1,15 @@
+turn_off_everything:
+  alias: Turn off everything
+  sequence:
+  - alias: Turn off the lights
+    data:
+      entity_id: light.all_hue_lights
+    service: light.turn_off
+  - alias: Turn off the TV
+    data:
+      entity_id: switch.tv
+    service: switch.turn_off
+  - alias: Turn off the stereo
+    data:
+      entity_id: switch.stereo
+    service: switch.turn_off

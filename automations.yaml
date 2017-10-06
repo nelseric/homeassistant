@@ -1,0 +1,13 @@
+- action:
+  - alias: Turn on the Stereo
+    data:
+      entity_id: switch.stereo
+    service: switch.turn_on
+  alias: Turn on Stereo with TV
+  condition: []
+  id: '1507304372611'
+  trigger:
+  - entity_id: " switch.tv\t"
+    from: 'off'
+    platform: state
+    to: 'on'
