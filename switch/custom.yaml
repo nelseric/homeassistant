@@ -14,7 +14,7 @@ switches:
       service: media_player.turn_on
       data:
         entity_id: media_player.hdmi_5
-    turn_on:
+    turn_off:
       service: media_player.turn_off
       data:
         entity_id: media_player.hdmi_5
