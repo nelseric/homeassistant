@@ -7,3 +7,6 @@ switch.tv:
 switch.stereo:
   emulated_hue: true
   emulated_hue_name: 'stereo'
+script.turn_off_everything:
+  emulated_hue: true
+  emulated_hue_name: 'everything'

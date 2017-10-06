@@ -5,7 +5,7 @@ homeassistant:
   elevation: !secret elevation
   unit_system: imperial
   time_zone: America/Chicago
-  customize: !include misc/customize.yaml
+  customize: !include customize.yaml
 
 updater:
 discovery:
