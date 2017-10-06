@@ -22,6 +22,8 @@ http:
 
 config:
 group: !include groups.yaml
+script: !include scripts.yaml
+automation: !include automations.yaml
 
 emulated_hue:
   type: alexa
@@ -48,7 +50,8 @@ ecobee:
     api_key: !secret ecobee_api_key
 
 hdmi_cec:
-        
+  platform: media_player
+
 mqtt: !include misc/mqtt.yaml
 device_tracker: !include_dir_list device_tracker
 switch: !include_dir_list switch
@@ -57,4 +60,3 @@ binary_sensor: !include_dir_list binary_sensor
 notify: !include_dir_list notify
 media_player: !include_dir_list media_player
 shell_command: !include misc/shell_commands.yaml
-
