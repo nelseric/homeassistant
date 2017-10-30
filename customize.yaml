@@ -4,9 +4,3 @@ switch.eric_pc:
 switch.tv:
   emulated_hue: true
   emulated_hue_name: 'tv'
-switch.stereo:
-  emulated_hue: true
-  emulated_hue_name: 'stereo'
-script.turn_off_everything:
-  emulated_hue: true
-  emulated_hue_name: 'everything'
