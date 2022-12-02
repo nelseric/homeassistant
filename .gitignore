@@ -14,3 +14,5 @@ node-red
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+id_deploy
+id_deploy.pub

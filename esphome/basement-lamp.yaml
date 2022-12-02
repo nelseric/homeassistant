@@ -1,5 +1,5 @@
 esphome:
-  name: "family-room-lamp"
+  name: "basement-lamp"
 
 esp8266:
   board: esp01_1m
@@ -21,5 +21,5 @@ wifi:
 
 # Device Specific Config
 substitutions:
-  upper_devicename: "family-room-lamp"
+  upper_devicename: "basement-lamp"
 <<: !include sonoff.yaml
