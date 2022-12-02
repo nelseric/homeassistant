@@ -6,6 +6,31 @@ default_config:
 tts:
   - platform: google_translate
 
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - light.dining_room_dining_room
+        - light.kitchen_group
+        - light.bathroom_cove_lights
+        - light.living_room_group
+        - light.lamp
+        - switch.sofa_lights_relay
+        - light.garage_group
+        - light.office_office_lights
+        - light.bedroom_group
+        - light.hallway_group
+        - light.erics_ceiling_fan
+        - light.erics_lamp
+        - switch.basement_lamp_relay
+        - light.basement_main_lights
+        - light.basment_steps
+        - light.grow_room_main_lights
+      include_domains:
+        - climate
+
+
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
