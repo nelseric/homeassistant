@@ -6,6 +6,7 @@ tts
 
 *.pem
 *.log*
+*.db*
 
 node-red
 
