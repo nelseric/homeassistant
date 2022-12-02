@@ -24,7 +24,7 @@ cloud:
         - light.erics_lamp
         - switch.basement_lamp_relay
         - light.basement_main_lights
-        - light.basment_steps
+        - light.basement_steps
         - light.grow_room_main_lights
       include_domains:
         - climate
