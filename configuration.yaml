@@ -28,6 +28,7 @@ cloud:
         - light.grow_room_main_lights
       include_domains:
         - climate
+        - script
 
 
 
