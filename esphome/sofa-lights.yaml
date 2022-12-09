@@ -1,5 +1,5 @@
 esphome:
-  name: "sofa-lighjts"
+  name: "sofa-lights"
 
 esp8266:
   board: esp01_1m

@@ -1,0 +1,72 @@
+- id: '1670401660076'
+  name: Sleep
+  entities:
+    light.signify_netherlands_b_v_lwb014_huelight:
+      supported_color_modes:
+      - brightness
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Hallway 1 Huelight
+      supported_features: 40
+      color_mode: brightness
+      brightness: 1
+      state: 'on'
+    light.signify_netherlands_b_v_lwb014_huelight_2:
+      supported_color_modes:
+      - brightness
+      off_with_transition: false
+      off_brightness: 1
+      friendly_name: Hallway 2 Huelight
+      supported_features: 40
+      state: 'off'
+    light.signify_netherlands_b_v_ltw011_huelight_2:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 3
+      color_temp_kelvin: 2732
+      color_temp: 366
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 167
+      - 89
+      xy_color:
+      - 0.524
+      - 0.387
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Kitchen 1 Huelight
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_ltw011_huelight_3:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 26
+      friendly_name: Kitchen 2 Huelight
+      supported_features: 40
+      state: 'off'
+    light.dining_room_dining_room:
+      supported_color_modes:
+      - brightness
+      device_id: '6'
+      zone_id: '3'
+      friendly_name: Dining Room Dining Room
+      supported_features: 32
+      state: 'off'
+    switch.sofa_lights_relay:
+      friendly_name: Sofa Lights
+      state: 'off'
+  icon: mdi:sleep
+  metadata: {}

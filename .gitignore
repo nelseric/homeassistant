@@ -16,3 +16,4 @@ secrets.yaml
 known_devices.yaml
 id_deploy
 id_deploy.pub
+.HA_VERSION
