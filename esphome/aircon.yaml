@@ -1,0 +1,182 @@
+substitutions:
+  name: "aircon"
+
+esphome:
+  name: "${name}"
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+
+  # This will allow for (future) project identification,
+  # configuration and updates.
+  project:
+    name: koenvervloesem.m5stack-air-quality-kit
+    version: "1.0"
+
+  libraries:
+    - "Wire"
+    # - "uFire SHT20"
+    - "ArduinoJson"
+  includes:
+    # - include/sht20.h
+
+esp32:
+  board: m5stack-core-esp32
+  framework:
+    type: arduino
+
+# To be able to get logs from the device via serial and api.
+logger:
+
+# API is a requirement of the dashboard import.
+api:
+
+# OTA is required for Over-the-Air updating
+ota:
+
+# This should point to the public location of this yaml file.
+dashboard_import:
+  package_import_url: github://koenvervloesem/M5Stack-Air-Quality-ESPHome/m5stack-air-quality-kit.yaml@main
+
+wifi:
+  # Set up a Wi-Fi access point using the device name above
+  ap:
+    password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision Wi-Fi credentials to the device.
+captive_portal:
+
+# Sets up Bluetooth LE on ESP32 to allow the user
+# to provision Wi-Fi credentials to the device.
+# TODO: Disable this for now, as it results in Wi-Fi not being set up.
+# Error: "create wifi task: failed to create task"
+#esp32_improv:
+#  authorizer: none
+
+# Sets up the improv via serial client for Wi-Fi provisioning.
+# Handy if your device has a usb port for the user to add credentials when they first get it.
+improv_serial:
+
+# Define I/O: UART, I²C and SPI
+uart:
+  rx_pin: 16
+  baud_rate: 9600
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  frequency: 200kHz
+
+spi:
+  clk_pin: 18
+  mosi_pin: 23
+  miso_pin: 19
+
+# Particulate matter sensor and temperature sensor
+sensor:
+  - platform: ezo
+    id: ezo_co2
+    name: "Interior1 co2"
+    address: 105
+    accuracy_decimals: 0
+    unit_of_measurement: "ppm"
+    update_interval: 10s
+
+# Button to toggle the display backlight
+binary_sensor:
+  - platform: gpio
+    id: M5_BtnA
+    pin:
+      number: 39
+      inverted: true
+    on_click:
+      then:
+        - switch.toggle: backlight
+  - platform: gpio
+    id: M5_BtnB
+    pin:
+      number: 38
+      inverted: true
+    on_click:
+      then:
+        - switch.toggle: backlight
+  - platform: gpio
+    id: M5_BtnC
+    pin:
+      number: 37
+      inverted: true
+    on_click:
+      then:
+        - switch.toggle: backlight
+
+# GPIO pin of the display backlight
+switch:
+  - platform: gpio
+    pin: 32
+    name: "Backlight"
+    id: backlight
+    restore_mode: ALWAYS_ON
+
+output:
+  - platform: ledc
+    pin: GPIO22
+    id: rtttl_out
+
+rtttl:
+  output: rtttl_out
+
+font:
+  - file: "gfonts://Roboto@medium"
+    id: font_roboto_medium22
+    size: 22
+    glyphs: '!"%()+,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/³µ'
+
+color:
+  - id: RED
+    red: 100%
+    green: 0%
+    blue: 0%
+  - id: BLUE
+    red: 0%
+    green: 0%
+    blue: 100%
+  - id: WHITE
+    red: 100%
+    green: 100%
+    blue: 100%
+
+display:
+  - platform: ili9341
+    id: m5stack_display
+    model: M5Stack
+    cs_pin: 14
+    dc_pin: 27
+    led_pin: 32
+    reset_pin: 33
+    rotation: 0
+    lambda: |-
+      it.rectangle(0,  0, it.get_width(), it.get_height(), BLUE);
+      it.rectangle(0, 22, it.get_width(), it.get_height(), BLUE);   // header bar
+      it.print(it.get_width() / 2, 11, id(font_roboto_medium22), RED, TextAlign::CENTER, "Particulate matter");
+      it.print(11,  33, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "PM1");
+      it.print(11,  55, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "PM2.5");
+      it.print(11,  77, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "PM10");
+      it.printf(it.get_width() - 11,  33, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f µg/m³", id(ezo_co2).state);
+      it.printf(it.get_width() - 11,  55, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f µg/m³", id(ezo_co2).state);
+      it.printf(it.get_width() - 11,  77, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f µg/m³", id(ezo_co2).state);
+      it.rectangle(0, 110, it.get_width(), 22, BLUE);   // header bar
+      it.print(it.get_width() / 2, 121, id(font_roboto_medium22), RED, TextAlign::CENTER, "Environment");
+      it.print(11, 143, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "T");
+      it.print(11, 165, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "H");
+      it.print(11, 187, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "VPD");
+      it.print(11, 209, id(font_roboto_medium22), WHITE, TextAlign::LEFT, "Tdp");
+      it.printf(it.get_width() - 77, 143, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f", id(ezo_co2).state);
+      it.printf(it.get_width() - 77, 165, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f", id(ezo_co2).state);
+      it.printf(it.get_width() - 77, 187, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f", id(ezo_co2).state);
+      it.printf(it.get_width() - 77, 209, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%.0f", id(ezo_co2).state);
+      it.printf(it.get_width() - 11, 143, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "°C");
+      it.printf(it.get_width() - 11, 165, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "%%");
+      it.printf(it.get_width() - 11, 187, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "kPa");
+      it.printf(it.get_width() - 11, 209, id(font_roboto_medium22), WHITE, TextAlign::RIGHT, "°C");
