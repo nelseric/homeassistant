@@ -1,0 +1,32 @@
+esphome:
+  name: bt-bridge
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "vX+BT9w0rus2+i9Uz/hBiGov5RqdSjK4DNJ39JC5U7Q="
+
+ota:
+  password: "4a5be15d33fc9bf43b92298e1361be11"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bt-Bridge Fallback Hotspot"
+    password: "fqouZVc6IPUX"
+
+captive_portal:
+
+bluetooth_proxy:
+    
