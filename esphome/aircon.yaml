@@ -39,13 +39,16 @@ dashboard_import:
   package_import_url: github://koenvervloesem/M5Stack-Air-Quality-ESPHome/m5stack-air-quality-kit.yaml@main
 
 wifi:
-  # Set up a Wi-Fi access point using the device name above
-  ap:
-    password: "12345678"
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
 # In combination with the `ap` this allows the user
 # to provision Wi-Fi credentials to the device.
 captive_portal:
+
+web_server:
+
+bluetooth_proxy:
 
 # Sets up Bluetooth LE on ESP32 to allow the user
 # to provision Wi-Fi credentials to the device.
@@ -78,7 +81,7 @@ spi:
 sensor:
   - platform: ezo
     id: ezo_co2
-    name: "Interior1 co2"
+    name: "${name} CO2"
     address: 105
     accuracy_decimals: 0
     unit_of_measurement: "ppm"
