@@ -1,10 +1,15 @@
+substitutions:
+  name: bt-proxy
+  board: esp32thing
+
 esphome:
-  name: bt-bridge
+  name: ${name}
+  name_add_mac_suffix: true
 
 esp32:
-  board: esp32dev
+  board: ${board}
   framework:
-    type: arduino
+    type: esp-idf
 
 # Enable logging
 logger:
@@ -21,12 +26,11 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: "Bt-Bridge Fallback Hotspot"
-    password: "fqouZVc6IPUX"
-
-captive_portal:
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+    active: true
 
 bluetooth_proxy:
-    
+  active: true
